@@ -140,7 +140,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.replace(/^<|>$/g, '');
+  return str.replace(/[<>]/g, '');
 }
 
 /**
@@ -201,11 +201,11 @@ function extractEmails(str) {
  */
 function getRectangleString(width, height) {
   let result = '';
-  result += `┌${'-'.repeat(width - 2)}┐\n`;
-  for (let i = 0; i < height - 2; i + 1) {
-    result += `|${' '.repeat(width - 2)}|\n`;
+  result += `┌${'─'.repeat(width - 2)}┐\n`;
+  for (let i = 0; i < height - 2; i += 1) {
+    result += `│${' '.repeat(width - 2)}│\n`;
   }
-  result += `└${'-'.repeat(width - 2)}┘\n`;
+  result += `└${'─'.repeat(width - 2)}┘\n`;
   return result;
 }
 
@@ -245,10 +245,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if (value.constuctor === String) {
-    return true;
-  }
-  return false;
+  return (typeof value === 'string' || value instanceof String);
 }
 
 /**
